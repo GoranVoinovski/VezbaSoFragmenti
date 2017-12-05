@@ -14,8 +14,7 @@ import butterknife.Unbinder;
  * Created by goran on 5.12.17.
  */
 
-public class Fragment2 extends Fragment {
-
+public class Fragment3 extends Fragment {
 
     private Unbinder mUnbind;
 
@@ -23,13 +22,9 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment2, null);
+        View view = inflater.inflate(R.layout.fragment1,null);
 
         mUnbind = ButterKnife.bind(this, view);
-
-
-
-
 
         return view;
     }
