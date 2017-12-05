@@ -1,13 +1,19 @@
 package com.example.goran.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -16,6 +22,7 @@ import butterknife.Unbinder;
 
 public class Fragment1 extends Fragment {
 
+@BindView(R.id.slika)ImageView img;
     private Unbinder mUnbind;
 
     @Nullable
@@ -26,7 +33,20 @@ public class Fragment1 extends Fragment {
 
         mUnbind = ButterKnife.bind(this, view);
 
+        Picasso.with(getActivity()).load(R.drawable.husky).fit().centerInside().into(img);
+
         return view;
+    }
+
+    @OnClick (R.id.btn)
+    public void KlikGuest(){
+        Users gostin = new Users();
+        Intent intent = new Intent(getActivity(), Main2Activity.class);
+        intent.putExtra("Novo",gostin);
+        startActivity(intent);
+
+
+
     }
 
     @Override
