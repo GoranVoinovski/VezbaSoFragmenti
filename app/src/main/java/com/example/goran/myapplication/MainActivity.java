@@ -1,5 +1,6 @@
 package com.example.goran.myapplication;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.mypager)ViewPager pager;
-    @BindView(R.id.mytabs)ViewPager tabs;
+    @BindView(R.id.mytabs)TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyPagerAdapter adapter = new MyPagerAdapter(this.getSupportFragmentManager());
         adapter.addFragment(new Fragment1(), "Guest");
-        adapter.addFragment(new Fragment1(), "Create User");
+        adapter.addFragment(new Fragment2(), "Create User");
 
         pager.setAdapter(adapter);
 
