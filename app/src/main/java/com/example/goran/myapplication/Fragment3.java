@@ -27,6 +27,7 @@ public class Fragment3 extends Fragment {
     @BindView(R.id.lastname)EditText prezime;
     @BindView(R.id.username)EditText uname;
     @BindView(R.id.btn)Button kopce;
+    User usermain;
     ArrayList<Users> useri;
     private Unbinder mUnbind;
 
@@ -40,7 +41,7 @@ public class Fragment3 extends Fragment {
         Intent primi = getActivity().getIntent();
         if (primi.hasExtra("NovMainUser")){
 
-            User usermain = (User) primi.getSerializableExtra("NovMainUser");
+            usermain = (User) primi.getSerializableExtra("NovMainUser");
             useri = new ArrayList<>();
             useri = usermain.getUsers();
 
@@ -65,6 +66,7 @@ public class Fragment3 extends Fragment {
         Users user = new Users(myusername, myuserlastname, myuseruname);
         Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
         pratinovuser.putExtra("NovUser", user);
+        pratinovuser.putExtra("NovUserMain", usermain);
         startActivity(pratinovuser);
 
 
