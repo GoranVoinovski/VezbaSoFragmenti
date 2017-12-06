@@ -7,12 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -21,8 +23,10 @@ import butterknife.Unbinder;
 
 public class Fragment3 extends Fragment {
 
-    @BindView(R.id.edtmail)EditText mail;
-    @BindView(R.id.edtpass)EditText pass;
+    @BindView(R.id.name)EditText ime;
+    @BindView(R.id.lastname)EditText prezime;
+    @BindView(R.id.username)EditText uname;
+    @BindView(R.id.btn)Button kopce;
     ArrayList<Users> useri;
     private Unbinder mUnbind;
 
@@ -50,5 +54,20 @@ public class Fragment3 extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mUnbind.unbind();
+    }
+
+    @OnClick (R.id.btn)
+    public void KlikKreiraj(){
+
+        String myusername = ime.getText().toString();
+        String myuserlastname = prezime.getText().toString();
+        String myuseruname = uname.getText().toString();
+        Users user = new Users(myusername, myuserlastname, myuseruname);
+        Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
+        pratinovuser.putExtra("NovUser", user);
+        startActivity(pratinovuser);
+
+
+
     }
 }

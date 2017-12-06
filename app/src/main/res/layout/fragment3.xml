@@ -14,22 +14,32 @@
 
 
     <EditText
-        android:id="@+id/edtmail"
+        android:id="@+id/name"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Name"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/slika"/>
 
     <EditText
-        android:id="@+id/edtpass"
+        android:id="@+id/lastname"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Lastname"
         android:textColorHint="@android:color/darker_gray"
-        android:layout_below="@id/edtmail"/>
+        android:layout_below="@id/name"/>
+
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_below="@id/lastname"/>
 
     <Button
         android:id="@+id/btn"
@@ -38,4 +48,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/create_user"/>
+
 </RelativeLayout>

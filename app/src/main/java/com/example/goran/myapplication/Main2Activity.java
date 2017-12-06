@@ -37,7 +37,7 @@ public class Main2Activity extends AppCompatActivity {
 
         MyPagerAdapter2 adapter2 = new MyPagerAdapter2(this.getSupportFragmentManager());
         adapter2.addFragment(new Fragment3(),"Add Users");
-        adapter2.addFragment(new Fragment3(),"Edit Users");
+        adapter2.addFragment(new Fragment4(),"Edit Users");
 
         pager.setAdapter(adapter2);
     }
