@@ -1,5 +1,6 @@
 package com.example.goran.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +30,7 @@ public class Fragment3 extends Fragment {
     @BindView(R.id.btn)Button kopce;
     User usermain;
     ArrayList<Users> useri;
+    String kopceopcija = "";
     private Unbinder mUnbind;
 
     @Nullable
@@ -46,6 +48,9 @@ public class Fragment3 extends Fragment {
             useri = usermain.getUsers();
 
 
+        }else if (primi.hasExtra("Adding")){
+
+            kopceopcija = "Adding";
         }
 
         return view;
@@ -59,17 +64,28 @@ public class Fragment3 extends Fragment {
 
     @OnClick (R.id.btn)
     public void KlikKreiraj(){
-
         String myusername = ime.getText().toString();
         String myuserlastname = prezime.getText().toString();
         String myuseruname = uname.getText().toString();
         Users user = new Users(myusername, myuserlastname, myuseruname);
-        Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
-        pratinovuser.putExtra("NovUser", user);
-        pratinovuser.putExtra("NovUserMain", usermain);
-        startActivity(pratinovuser);
 
 
+        if (kopceopcija.equals("Adding")){
+            Intent intent = new Intent();
+            intent.putExtra("AddedUser", user);
+            getActivity().setResult(Activity.RESULT_OK, intent);
+            getActivity().finish();
+
+
+
+
+        }else {
+            Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
+            pratinovuser.putExtra("NovUser", user);
+            pratinovuser.putExtra("NovUserMain", usermain);
+            startActivity(pratinovuser);
+
+        }
 
     }
 }

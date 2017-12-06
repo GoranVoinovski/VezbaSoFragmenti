@@ -15,6 +15,24 @@
 
     </Spinner>
 
+
+    <Button
+        android:id="@+id/add"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spiner"
+        android:text="Add user"/>
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spiner"
+        android:layout_alignParentRight="true"
+        android:text="edit user"/>
+
     <TextView
         android:id="@+id/textv"
         android:textColor="@color/white"

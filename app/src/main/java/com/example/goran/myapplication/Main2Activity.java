@@ -14,7 +14,7 @@ public class Main2Activity extends AppCompatActivity {
 
     @BindView(R.id.mypager)ViewPager pager;
     @BindView(R.id.mytabs)TabLayout tabs;
-    Users gostin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,12 @@ public class Main2Activity extends AppCompatActivity {
         if (proverka.hasExtra("NovMainUser")){
 
             pager.setCurrentItem(0);
+
+
+
+        }else if (proverka.hasExtra("Edituser")){
+
+            pager.setCurrentItem(1);
         }
 
 
