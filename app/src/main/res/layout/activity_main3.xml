@@ -10,11 +10,13 @@
     <TextView
         android:id="@+id/account"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@android:color/darker_gray"/>
 
 
     <Spinner
-        android:layout_below="@id/account"
+        android:layout_below="@id/add"
         android:id="@+id/spiner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,27 +26,29 @@
 
     <Button
         android:id="@+id/add"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spiner"
+        android:layout_below="@id/account"
         android:text="Add user"/>
 
     <Button
         android:id="@+id/edit"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spiner"
+        android:layout_below="@id/account"
         android:layout_alignParentRight="true"
         android:text="edit user"/>
 
     <TextView
         android:id="@+id/textv"
+        android:padding="20dp"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="180dp"/>
+        android:layout_marginBottom="120dp"/>
 
 </RelativeLayout>

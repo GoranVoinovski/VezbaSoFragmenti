@@ -11,18 +11,21 @@ public class Users implements Serializable{
     String name;
     String lastname;
     String username;
+    char gender;
 
     public Users() {
         name = " ";
         lastname = " ";
         username = "Guest";
+        gender = 'M';
     }
 
 
-    public Users(String name, String lastname, String username) {
+    public Users(String name, String lastname, String username, char gender) {
         this.name = name;
         this.lastname = lastname;
         this.username = username;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -47,6 +50,14 @@ public class Users implements Serializable{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 
     @Override

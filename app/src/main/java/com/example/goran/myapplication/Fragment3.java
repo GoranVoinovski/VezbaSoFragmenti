@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +33,11 @@ public class Fragment3 extends Fragment {
     @BindView(R.id.lastname)EditText prezime;
     @BindView(R.id.username)EditText uname;
     @BindView(R.id.btn)Button kopce;
+    @BindView(R.id.rbm)
+    RadioButton male;
+    @BindView(R.id.rbf)
+    RadioButton female;
+    char pol = 'M';
     User usermain;
     ArrayList<Users> useri;
     String kopceopcija = "";
@@ -68,12 +74,22 @@ public class Fragment3 extends Fragment {
         mUnbind.unbind();
     }
 
+
+
     @OnClick (R.id.btn)
     public void KlikKreiraj(){
         String myusername = ime.getText().toString();
         String myuserlastname = prezime.getText().toString();
         String myuseruname = uname.getText().toString();
-        Users user = new Users(myusername, myuserlastname, myuseruname);
+        if (male.isChecked()) {
+            pol = 'M';
+            male.setChecked(true);
+        } else {
+            pol = 'F';
+            female.setChecked(true);
+        }
+
+        Users user = new Users(myusername, myuserlastname, myuseruname, pol);
 
         if (myusername.isEmpty() || myuserlastname.isEmpty() || myuseruname.isEmpty()){
 

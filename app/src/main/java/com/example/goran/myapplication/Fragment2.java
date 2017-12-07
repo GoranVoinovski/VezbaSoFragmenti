@@ -81,4 +81,7 @@ public class Fragment2 extends Fragment {
     boolean isEmailValid(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+
+
 }

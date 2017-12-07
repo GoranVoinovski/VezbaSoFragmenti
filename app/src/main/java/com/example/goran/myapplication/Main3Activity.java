@@ -20,6 +20,7 @@ public class Main3Activity extends AppCompatActivity {
     @BindView(R.id.textv)TextView txt;
     @BindView(R.id.account)TextView glavenuser;
     @BindView(R.id.spiner)Spinner spinner;
+    char pol;
     Users user;
     Users usernow;
     User mainUser;
@@ -54,11 +55,12 @@ public class Main3Activity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
         spinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 usernow = adapter.getItem(position);
-                txt.setText("Name: " + usernow.getName() + "\nLastname: " + usernow.getLastname());
+                txt.setText("Name: " + usernow.getName() + "\nLastname: " + usernow.getLastname() + "\nGender: " + usernow.getGender());
             }
 
             @Override
@@ -104,15 +106,18 @@ public class Main3Activity extends AppCompatActivity {
                 Users useradd;
                 useradd = (Users) data.getSerializableExtra("AddedUser");
                 useri.add(useradd);
-                txt.setText(useradd.getName() + " " + useradd.getLastname());
-                adapter.notifyDataSetChanged();
+                adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
+                spinner.setAdapter(adapter);
             }else if (data.hasExtra("EditedUser")){
                 Users edited;
                 edited = (Users) data.getSerializableExtra("EditedUser");
                 usernow.setName(edited.getName());
                 usernow.setLastname(edited.getLastname());
                 usernow.setUsername(edited.getUsername());
-                adapter.notifyDataSetChanged();
+                pol = edited.gender;
+                usernow.setGender(pol);
+                adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
+                spinner.setAdapter(adapter);
 
 
 
@@ -120,7 +125,12 @@ public class Main3Activity extends AppCompatActivity {
 
 
 
-
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Main3Activity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

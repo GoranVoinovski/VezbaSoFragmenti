@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.squareup.picasso.Picasso;
 
@@ -30,8 +31,13 @@ public class Fragment4 extends Fragment {
     @BindView(R.id.lastname)EditText prezime;
     @BindView(R.id.username)EditText uname;
     @BindView(R.id.btn)Button kopce;
+    @BindView(R.id.rbm)
+    RadioButton male;
+    @BindView(R.id.rbf)
+    RadioButton female;
     Users userediting = new Users();
     int imeuser = 0;
+    char pol;
 
     private Unbinder mUnbind;
 
@@ -52,6 +58,12 @@ public class Fragment4 extends Fragment {
         ime.setText(userediting.getName());
         prezime.setText(userediting.getLastname());
         uname.setText(userediting.getUsername());
+        pol = userediting.getGender();
+            if (pol == 'M') {
+                male.setChecked(true);
+            } else {
+                female.setChecked(true);
+            }
 
 
         }
@@ -83,6 +95,12 @@ public class Fragment4 extends Fragment {
            userediting.setName(ime.getText().toString());
            userediting.setLastname(prezime.getText().toString());
            userediting.setUsername(uname.getText().toString());
+           if (male.isChecked()) {
+               pol = 'M';
+           } else {
+               pol = 'F';
+           }
+           userediting.setGender(pol);
            Intent pratiedit = new Intent();
            pratiedit.putExtra("EditedUser",userediting);
            getActivity().setResult(Activity.RESULT_OK,pratiedit);

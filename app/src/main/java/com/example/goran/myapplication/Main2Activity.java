@@ -47,4 +47,9 @@ public class Main2Activity extends AppCompatActivity {
 
         pager.setAdapter(adapter2);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
