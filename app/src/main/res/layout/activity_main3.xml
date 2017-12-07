@@ -7,8 +7,14 @@
     android:background="@drawable/background"
     tools:context="com.example.goran.myapplication.Main3Activity">
 
+    <TextView
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <Spinner
+        android:layout_below="@id/account"
         android:id="@+id/spiner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

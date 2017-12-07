@@ -40,9 +40,8 @@ public class Fragment1 extends Fragment {
 
     @OnClick (R.id.btn)
     public void KlikGuest(){
-        Users gostin = new Users();
-        Intent intent = new Intent(getActivity(), Main2Activity.class);
-        intent.putExtra("Novo",gostin);
+        Intent intent = new Intent(getActivity(), Main3Activity.class);
+        intent.putExtra("Novo","Novo");
         startActivity(intent);
 
 

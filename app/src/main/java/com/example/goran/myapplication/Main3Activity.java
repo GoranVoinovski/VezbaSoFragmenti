@@ -18,6 +18,7 @@ import butterknife.OnClick;
 public class Main3Activity extends AppCompatActivity {
 
     @BindView(R.id.textv)TextView txt;
+    @BindView(R.id.account)TextView glavenuser;
     @BindView(R.id.spiner)Spinner spinner;
     Users user;
     Users usernow;
@@ -32,16 +33,21 @@ public class Main3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
         ButterKnife.bind(this);
+        useri = new ArrayList<>();
 
         Intent intentprimi = getIntent();
         if (intentprimi.hasExtra("NovUser")){
 
            mainUser = (User) intentprimi.getSerializableExtra("NovUserMain");
-           useri = new ArrayList<>();
            useri = mainUser.getUsers();
+           glavenuser.setText("Users for the account: " + mainUser.getMail());
            user = (Users) intentprimi.getSerializableExtra("NovUser");
            txt.setText(user.getName() + " " + user.getLastname());
            useri.add(user);
+
+        }else if (intentprimi.hasExtra("Novo")){
+            user = new Users();
+            useri.add(user);
 
         }
 
@@ -52,7 +58,7 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 usernow = adapter.getItem(position);
-                txt.setText(usernow.getName() + " " + usernow.getLastname());
+                txt.setText("Name: " + usernow.getName() + "\nLastname: " + usernow.getLastname());
             }
 
             @Override

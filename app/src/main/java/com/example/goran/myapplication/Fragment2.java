@@ -45,15 +45,28 @@ public class Fragment2 extends Fragment {
 
     @OnClick (R.id.btn)
     public void KlikNajava(){
+
+
         String posta = mail.getText().toString();
         String lozinka = pass.getText().toString();
-        ArrayList<Users> user = new ArrayList<>();
-        User usermain = new User(posta, lozinka, user);
-        Intent novusermain = new Intent(getActivity(), Main2Activity.class);
-        novusermain.putExtra("NovMainUser", usermain);
-        startActivity(novusermain);
+        boolean validna =  isEmailValid(posta);
+        if (posta.isEmpty() || lozinka.isEmpty() || !validna){
+
+            if (posta.isEmpty() || !validna){
+                mail.setError("Enter your email");
+            }else{
+                pass.setError("Enter your password");
+
+            }
 
 
+        }else {
+            ArrayList<Users> user = new ArrayList<>();
+            User usermain = new User(posta, lozinka, user);
+            Intent novusermain = new Intent(getActivity(), Main2Activity.class);
+            novusermain.putExtra("NovMainUser", usermain);
+            startActivity(novusermain);
+        }
 
 
     }
@@ -62,5 +75,10 @@ public class Fragment2 extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mUnbind.unbind();
+    }
+
+
+    boolean isEmailValid(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

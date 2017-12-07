@@ -15,10 +15,14 @@
 
     <EditText
         android:id="@+id/edtmail"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
+        android:textColor="@color/white"
+        android:inputType="textEmailAddress"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/slika"/>
 
@@ -28,11 +32,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:inputType="textPassword"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/edtmail"/>
 
     <Button
         android:id="@+id/btn"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"

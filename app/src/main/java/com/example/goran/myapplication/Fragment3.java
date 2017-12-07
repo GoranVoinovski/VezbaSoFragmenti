@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ import butterknife.Unbinder;
 
 public class Fragment3 extends Fragment {
 
+    @BindView(R.id.slika)ImageView img;
     @BindView(R.id.name)EditText ime;
     @BindView(R.id.lastname)EditText prezime;
     @BindView(R.id.username)EditText uname;
@@ -38,8 +42,10 @@ public class Fragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment3,null);
-
         mUnbind = ButterKnife.bind(this, view);
+
+        Picasso.with(getActivity()).load(R.drawable.husky).fit().centerInside().into(img);
+
         Intent primi = getActivity().getIntent();
         if (primi.hasExtra("NovMainUser")){
 
@@ -69,23 +75,34 @@ public class Fragment3 extends Fragment {
         String myuseruname = uname.getText().toString();
         Users user = new Users(myusername, myuserlastname, myuseruname);
 
+        if (myusername.isEmpty() || myuserlastname.isEmpty() || myuseruname.isEmpty()){
 
-        if (kopceopcija.equals("Adding")){
-            Intent intent = new Intent();
-            intent.putExtra("AddedUser", user);
-            getActivity().setResult(Activity.RESULT_OK, intent);
-            getActivity().finish();
-
-
-
+            if (myusername.isEmpty()){ime.setError("Enter your name");}
+            else if (myuserlastname.isEmpty()){prezime.setError("Enter your lastname");}
+            else {uname.setError("Enter your username");}
 
         }else {
-            Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
-            pratinovuser.putExtra("NovUser", user);
-            pratinovuser.putExtra("NovUserMain", usermain);
-            startActivity(pratinovuser);
+
+            if (kopceopcija.equals("Adding")){
+                Intent intent = new Intent();
+                intent.putExtra("AddedUser", user);
+                getActivity().setResult(Activity.RESULT_OK, intent);
+                getActivity().finish();
+
+
+
+
+            }else {
+                Intent pratinovuser = new Intent(getActivity(), Main3Activity.class);
+                pratinovuser.putExtra("NovUser", user);
+                pratinovuser.putExtra("NovUserMain", usermain);
+                startActivity(pratinovuser);
+
+            }
 
         }
+
+
 
     }
 }
