@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/colorPrimary"
     tools:context="com.example.goran.myapplication.Main3Activity">
 
     <android.support.v7.widget.RecyclerView
@@ -13,35 +13,24 @@
             style="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add"/>
 
 
     <TextView
         android:id="@+id/account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/add"
         android:textColor="@android:color/darker_gray"/>
 
 
     <Button
         android:id="@+id/add"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/account"
         android:text="Add user"/>
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/account"
-        android:layout_alignParentRight="true"
-        android:text="edit user"/>
-
 
 
 </RelativeLayout>

@@ -37,6 +37,7 @@ public class Fragment4 extends Fragment {
     RadioButton female;
     Users userediting = new Users();
     int imeuser = 0;
+    int user = 0;
     char pol;
 
     private Unbinder mUnbind;
@@ -54,6 +55,7 @@ public class Fragment4 extends Fragment {
         if (prevzemiedit.hasExtra("Edit")){
 
         userediting = (Users) prevzemiedit.getSerializableExtra("Edit");
+        user = prevzemiedit.getIntExtra("Pozicija",0);
         imeuser = userediting.getName().length();
         ime.setText(userediting.getName());
         prezime.setText(userediting.getLastname());
@@ -103,6 +105,7 @@ public class Fragment4 extends Fragment {
            userediting.setGender(pol);
            Intent pratiedit = new Intent();
            pratiedit.putExtra("EditedUser",userediting);
+           pratiedit.putExtra("Pozicija",user);
            getActivity().setResult(Activity.RESULT_OK,pratiedit);
            getActivity().finish();
        }

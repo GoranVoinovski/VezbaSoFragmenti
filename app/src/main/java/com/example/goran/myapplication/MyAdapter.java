@@ -26,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     Users users;
     List<Users> usersList = new ArrayList<>();
 
-    public void setItems (List<Users> users) {
+    public void setItems(List<Users> users) {
         usersList = users;
     }
 
@@ -39,31 +39,34 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Context context1 = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context1);
 
-        View view = inflater.inflate(R.layout.recycler__view_row,parent,false);
+        View view = inflater.inflate(R.layout.recycler__view_row, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final MyAdapter.ViewHolder holder, final int position) {
 
         users = usersList.get(position);
+
 
         holder.tekst.setText(users.getUsername());
 
         holder.tekst2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Activity origin = (Main3Activity)context;
+                users = (Users) usersList.get(position);
+                int user = usersList.indexOf(users);
+                Activity origin = (Main3Activity) context;
                 Intent edituser = new Intent(origin, Main2Activity.class);
                 edituser.putExtra("Edituser", "Edituser");
                 edituser.putExtra("Adding", "Adding");
                 edituser.putExtra("Edit", users);
+                edituser.putExtra("Pozicija", user);
                 origin.startActivityForResult(edituser, 1000);
             }
         });
-
 
 
     }
@@ -74,8 +77,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.textv)TextView tekst;
-        @BindView(R.id.textv2)Button tekst2;
+        @BindView(R.id.textv)
+        TextView tekst;
+        @BindView(R.id.textv2)
+        Button tekst2;
 
         public ViewHolder(View itemView) {
 
@@ -83,16 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ButterKnife.bind(this, itemView);
 
 
-
         }
     }
 
-    @OnClick(R.id.textv2)
-    public void EditUser(){
-
-
-
-
-
-    }
 }

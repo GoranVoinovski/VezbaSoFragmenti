@@ -44,19 +44,20 @@ public class Main3Activity extends AppCompatActivity {
 
 
         Intent intentprimi = getIntent();
-        if (intentprimi.hasExtra("NovUser")){
+        if (intentprimi.hasExtra("NovUser")) {
 
-           mainUser = (User) intentprimi.getSerializableExtra("NovUserMain");
-           glavenuser.setText("Users for the account: " + mainUser.getMail());
-           user = (Users) intentprimi.getSerializableExtra("NovUser");
-           useri.add(user);
+            mainUser = (User) intentprimi.getSerializableExtra("NovUserMain");
+            glavenuser.setText("Users for the account: " + mainUser.getMail());
+            user = (Users) intentprimi.getSerializableExtra("NovUser");
+            useri.add(user);
 
 
-        }else if (intentprimi.hasExtra("Novo")){
+        } else if (intentprimi.hasExtra("Novo")) {
             user = new Users();
             useri.add(user);
 
         }
+
         myView.setAdapter(adapter);
 
     }
@@ -85,11 +86,10 @@ public class Main3Activity extends AppCompatActivity {
             }else if (data.hasExtra("EditedUser")){
                 Users edited;
                 edited = (Users) data.getSerializableExtra("EditedUser");
-                user.setName(edited.getName());
-                user.setLastname(edited.getLastname());
-                user.setUsername(edited.getUsername());
-                pol = edited.gender;
-                user.setGender(pol);
+               int userpoz = data.getIntExtra("Pozicija",0);
+                user = useri.get(userpoz);
+                useri.remove(user);
+                useri.add(userpoz, edited);
                 adapter.notifyDataSetChanged();
 
 
@@ -112,4 +112,6 @@ public class Main3Activity extends AppCompatActivity {
 
             return useri;
     }
+
+
 }
