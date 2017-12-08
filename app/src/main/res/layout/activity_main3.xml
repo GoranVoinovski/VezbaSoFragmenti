@@ -7,21 +7,22 @@
     android:background="@drawable/background"
     tools:context="com.example.goran.myapplication.Main3Activity">
 
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/textv"
+            android:padding="10dp"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_alignParentBottom="true"/>
+
+
     <TextView
         android:id="@+id/account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="@android:color/darker_gray"/>
-
-
-    <Spinner
-        android:layout_below="@id/add"
-        android:id="@+id/spiner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </Spinner>
 
 
     <Button
@@ -41,14 +42,6 @@
         android:layout_alignParentRight="true"
         android:text="edit user"/>
 
-    <TextView
-        android:id="@+id/textv"
-        android:padding="20dp"
-        style="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textColor="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"/>
+
 
 </RelativeLayout>

@@ -22,16 +22,19 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         ButterKnife.bind(this);
-        setUpViewPager2(pager);
+        boolean showEditUser = true;
 
         Intent proverka = getIntent();
-        if (proverka.hasExtra("NovMainUser")){
-
+        if (proverka.hasExtra("NovMainUser")|| !proverka.hasExtra("Edituser")){
+            showEditUser = false;
             pager.setCurrentItem(0);
 
 
+        }
 
-        }else if (proverka.hasExtra("Edituser")){
+        setUpViewPager2(pager, showEditUser);
+
+        if (proverka.hasExtra("Edituser")){
 
             pager.setCurrentItem(1);
         }
@@ -39,10 +42,12 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 
-    private void setUpViewPager2(ViewPager pager) {
+    private void setUpViewPager2(ViewPager pager,boolean showEditUsrs) {
 
         MyPagerAdapter2 adapter2 = new MyPagerAdapter2(this.getSupportFragmentManager());
         adapter2.addFragment(new Fragment3(),"Add Users");
+
+        if (showEditUsrs)
         adapter2.addFragment(new Fragment4(),"Edit Users");
 
         pager.setAdapter(adapter2);

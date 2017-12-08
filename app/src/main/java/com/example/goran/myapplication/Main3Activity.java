@@ -3,6 +3,8 @@ package com.example.goran.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,15 +19,14 @@ import butterknife.OnClick;
 
 public class Main3Activity extends AppCompatActivity {
 
-    @BindView(R.id.textv)TextView txt;
     @BindView(R.id.account)TextView glavenuser;
-    @BindView(R.id.spiner)Spinner spinner;
+    @BindView(R.id.textv)RecyclerView myView;
     char pol;
     Users user;
-    Users usernow;
     User mainUser;
     ArrayList<Users> useri;
-    ArrayAdapter<Users> adapter;
+
+    MyAdapter adapter;
 
 
     @Override
@@ -36,41 +37,27 @@ public class Main3Activity extends AppCompatActivity {
         ButterKnife.bind(this);
         useri = new ArrayList<>();
 
+        adapter = new MyAdapter(this);
+        adapter.setItems(useri);
+        myView.setHasFixedSize(true);
+        myView.setLayoutManager(new LinearLayoutManager(this));
+
+
         Intent intentprimi = getIntent();
         if (intentprimi.hasExtra("NovUser")){
 
            mainUser = (User) intentprimi.getSerializableExtra("NovUserMain");
-           useri = mainUser.getUsers();
            glavenuser.setText("Users for the account: " + mainUser.getMail());
            user = (Users) intentprimi.getSerializableExtra("NovUser");
-           txt.setText(user.getName() + " " + user.getLastname());
            useri.add(user);
+
 
         }else if (intentprimi.hasExtra("Novo")){
             user = new Users();
             useri.add(user);
 
         }
-
-
-        adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
-        spinner.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                usernow = adapter.getItem(position);
-                txt.setText("Name: " + usernow.getName() + "\nLastname: " + usernow.getLastname() + "\nGender: " + usernow.getGender());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-
+        myView.setAdapter(adapter);
 
     }
 
@@ -78,21 +65,8 @@ public class Main3Activity extends AppCompatActivity {
     public void AddUser(){
 
         Intent adduser = new Intent(Main3Activity.this, Main2Activity.class);
-        adduser.putExtra("Adding", "Adding");
+        adduser.putExtra("Adding", "Addwrap_contenting");
         startActivityForResult(adduser,1000);
-
-
-
-    }
-
-    @OnClick (R.id.edit)
-    public void EditUser(){
-
-        Intent edituser = new Intent(Main3Activity.this, Main2Activity.class);
-        edituser.putExtra("Edituser", "Edituser");
-        edituser.putExtra("Adding", "Adding");
-        edituser.putExtra("Edit", usernow);
-        startActivityForResult(edituser, 1000);
 
 
 
@@ -103,21 +77,20 @@ public class Main3Activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 1000){
             if (data.hasExtra("AddedUser")){
-                Users useradd;
-                useradd = (Users) data.getSerializableExtra("AddedUser");
-                useri.add(useradd);
-                adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
-                spinner.setAdapter(adapter);
+                user = new Users();
+                user = (Users) data.getSerializableExtra("AddedUser");
+                useri.add(user);
+                adapter.notifyDataSetChanged();
+
             }else if (data.hasExtra("EditedUser")){
                 Users edited;
                 edited = (Users) data.getSerializableExtra("EditedUser");
-                usernow.setName(edited.getName());
-                usernow.setLastname(edited.getLastname());
-                usernow.setUsername(edited.getUsername());
+                user.setName(edited.getName());
+                user.setLastname(edited.getLastname());
+                user.setUsername(edited.getUsername());
                 pol = edited.gender;
-                usernow.setGender(pol);
-                adapter = new ArrayAdapter<Users>(this, android.R.layout.simple_list_item_1, useri);
-                spinner.setAdapter(adapter);
+                user.setGender(pol);
+                adapter.notifyDataSetChanged();
 
 
 
@@ -132,5 +105,11 @@ public class Main3Activity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(Main3Activity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+         ArrayList<Users> generateList() {
+
+
+            return useri;
     }
 }
