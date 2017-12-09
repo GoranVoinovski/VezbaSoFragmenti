@@ -25,7 +25,7 @@ import butterknife.Unbinder;
 
 public class Fragment2 extends Fragment {
 
-    @BindView(R.id.slika)ImageView img;
+
     @BindView(R.id.edtmail)EditText mail;
     @BindView(R.id.edtpass)EditText pass;
     private Unbinder mUnbind;
@@ -36,7 +36,7 @@ public class Fragment2 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment2, null);
         mUnbind = ButterKnife.bind(this, view);
-        Picasso.with(getActivity()).load(R.drawable.husky).fit().centerInside().into(img);
+
 
 
 

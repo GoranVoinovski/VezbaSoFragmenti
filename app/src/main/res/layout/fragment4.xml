@@ -15,14 +15,15 @@
 
     <EditText
         android:id="@+id/name"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:hint="Name"
-        android:textColor="@color/white"
+        style="@style/Base.TextAppearance.AppCompat.Small"
         android:inputType="textCapSentences"
+        android:textColor="@color/white"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/slika"/>
 
@@ -33,9 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        style="@style/Base.TextAppearance.AppCompat.Small"
         android:hint="Lastname"
-        android:textColor="@color/white"
         android:inputType="textCapSentences"
+        android:textColor="@color/white"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/name"/>
 
@@ -48,8 +50,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:hint="Username"
-        android:textColor="@color/white"
+        style="@style/Base.TextAppearance.AppCompat.Small"
         android:inputType="textCapSentences"
+        android:textColor="@color/white"
         android:textColorHint="@android:color/darker_gray"
         android:layout_below="@id/lastname"/>
 
@@ -57,7 +60,9 @@
         android:id="@+id/rg"
         android:layout_below="@id/username"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="17dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -73,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="M"
+            android:layout_marginLeft="10dp"
             android:textColor="@android:color/white"/>
 
 
@@ -86,5 +92,5 @@
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/edit_user"/>
+        android:text="Save"/>
 </RelativeLayout>

@@ -2,6 +2,8 @@
 <resources>
     <color name="colorPrimary">#314761</color>
     <color name="colorPrimaryDark">#314761</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#289976</color>
     <color name="white">#fff</color>
+    <color name="plava">#202f3d</color>
+    <color name="zelena">#289976</color>
 </resources>

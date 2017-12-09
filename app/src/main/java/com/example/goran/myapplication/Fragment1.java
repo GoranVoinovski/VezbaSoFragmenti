@@ -22,7 +22,6 @@ import butterknife.Unbinder;
 
 public class Fragment1 extends Fragment {
 
-@BindView(R.id.slika)ImageView img;
     private Unbinder mUnbind;
 
     @Nullable
@@ -32,8 +31,6 @@ public class Fragment1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment1,null);
 
         mUnbind = ButterKnife.bind(this, view);
-
-        Picasso.with(getActivity()).load(R.drawable.husky).fit().centerInside().into(img);
 
         return view;
     }
