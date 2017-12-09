@@ -6,4 +6,5 @@
     <color name="white">#fff</color>
     <color name="plava">#202f3d</color>
     <color name="zelena">#289976</color>
+    <color name="transparent">#00289976</color>
 </resources>
